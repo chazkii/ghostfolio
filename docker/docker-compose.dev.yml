@@ -4,6 +4,8 @@ services:
     extends:
       file: docker-compose.yml
       service: postgres
+    # Source DB (LXC 192.168.1.221) is PostgreSQL 17; match major version so dumps restore cleanly
+    image: docker.io/library/postgres:17-alpine
     container_name: gf-postgres-dev
     ports:
       - ${POSTGRES_PORT:-5432}:5432
